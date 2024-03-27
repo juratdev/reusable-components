@@ -3,10 +3,11 @@
     <div
       :class="open ? 'border-blue-500 text-blue-500' : ''"
       @click="openDropDown"
-      class="flex hover:border-blue-500 hover:text-blue-500 duration-300 transition items-center justify-between bg-gray-light-200 border-2 rounded-md py-2 px-3"
+      v-click-outside="closeDrop"
+      class="flex hover:border-blue-500 hover:text-blue-500 duration-300 transition items-center justify-between bg-gray-light-200 border-2 select-none rounded-md py-2 px-3"
     >
       <p>{{ selectedText }}</p>
-      <slot name="suffix" />
+      <slot name="suffix" :class="open ? 'rotate-90' : 'rotate-0'" />
     </div>
     <transition>
       <div class="z-10">
@@ -48,6 +49,10 @@ let open = ref(false);
 
 function openDropDown() {
   open.value = !open.value;
+}
+
+function closeDrop() {
+  open.value = false;
 }
 let emit = defineEmits(["value"]);
 

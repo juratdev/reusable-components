@@ -65,7 +65,7 @@
       <div>
         <Select :selectedText="mainText" @value="upDateValue">
           <template #suffix>
-            <i class="fa-solid fa-angle-down"></i>
+            <i class="fa-solid fa-angle-right"></i>
           </template>
         </Select>
       </div>
