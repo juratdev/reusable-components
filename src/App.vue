@@ -60,20 +60,30 @@
         </div>
       </div>
     </div>
-    <!-- <div class="flex flex-col">
-      <h2 class="px-5 pt-5 text-2xl font-medium">Form Selects:</h2>
+    <div class="ms-14 flex flex-col">
+      <h2 class="px-5 py-5 text-2xl font-medium">Form Selects:</h2>
       <div>
-        <Select />
+        <Select :selectedText="mainText" @value="upDateValue">
+          <template #suffix>
+            <i class="fa-solid fa-angle-down"></i>
+          </template>
+        </Select>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 
 <script setup>
 import Input from "./components/FormInput.vue";
 import Button from "./components/Buttons.vue";
-// import select from "./components/Selects.vue";
+import Select from "./components/Selects.vue";
 import { ref } from "vue";
+
+const mainText = ref("All");
+
+function upDateValue(value) {
+  mainText.value = value[0];
+}
 
 const showPasswordIcon = ref(false);
 const typePass = ref("password");

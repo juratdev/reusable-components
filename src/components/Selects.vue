@@ -1,33 +1,70 @@
 <template>
-  <div>
-    <form>
-      <label
-        for="countries"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >Select an option</label
-      >
-      <select
-        id="countries"
-        class="bg-blue-50 border-2 outline-none focus-within:border-blue-500 rounded px-2.5 py-3"
-      >
-        <option selected>Choose a country</option>
-        <option value="US">United States</option>
-        <option value="CA">Canada</option>
-        <option value="FR">France</option>
-        <option value="DE">Germany</option>
-      </select>
-    </form>
+  <div class="cursor-pointer w-64">
+    <div
+      :class="open ? 'border-blue-500 text-blue-500' : ''"
+      @click="openDropDown"
+      class="flex hover:border-blue-500 hover:text-blue-500 duration-300 transition items-center justify-between bg-gray-light-200 border-2 rounded-md py-2 px-3"
+    >
+      <p>{{ selectedText }}</p>
+      <slot name="suffix" />
+    </div>
+    <transition>
+      <div class="z-10">
+        <div
+          class="z-10 w-64 p-4 bg-white mt-1 border-2 rounded-md absolute"
+          v-if="open"
+        >
+          <div
+            v-for="(item, index) in options"
+            :key="index"
+            class="hover:text-blue-500 transition duration-300 last:border-b-0 pb-2 last:pb-0 border-b-2"
+          >
+            <p @click="updateValue(item.option, item.id)">{{ item.option }}</p>
+          </div>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script setup>
-import { defineProps } from "vue";
+import { defineProps, defineEmits, ref } from "vue";
 
 defineProps({
   label: String,
   selectedText: String,
-  selectShow: Boolean,
 });
+
+const options = [
+  { option: "Olma", id: 1 },
+  { option: "Anor", id: 2 },
+  { option: "Nok", id: 3 },
+  { option: "Shaftoli", id: 4 },
+  { option: "Uzum", id: 5 },
+  { option: "Banan", id: 6 },
+];
+
+let open = ref(false);
+
+function openDropDown() {
+  open.value = !open.value;
+}
+let emit = defineEmits(["value"]);
+
+function updateValue(item, index) {
+  open.value = false;
+  emit("value", [item, index]);
+}
 </script>
 
-<style scoped></style>
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>
