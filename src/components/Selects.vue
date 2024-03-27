@@ -14,22 +14,20 @@
         <slot name="suffix" />
       </div>
     </div>
-    <transition>
-      <div class="z-10">
+    <Transition name="fade-up" mode="out-in">
+      <div
+        class="z-10 w-64 p-4 bg-white mt-1 border-2 rounded-md absolute"
+        v-if="open"
+      >
         <div
-          class="z-10 w-64 p-4 bg-white mt-1 border-2 rounded-md absolute"
-          v-if="open"
+          v-for="(item, index) in options"
+          :key="index"
+          class="hover:text-blue-500 transition duration-300 last:border-b-0 pb-2 last:pb-0 border-b-2"
         >
-          <div
-            v-for="(item, index) in options"
-            :key="index"
-            class="hover:text-blue-500 transition duration-300 last:border-b-0 pb-2 last:pb-0 border-b-2"
-          >
-            <p @click="updateValue(item.option, item.id)">{{ item.option }}</p>
-          </div>
+          <p @click="updateValue(item.option, item.id)">{{ item.option }}</p>
         </div>
       </div>
-    </transition>
+    </Transition>
   </div>
 </template>
 
@@ -68,13 +66,14 @@ function updateValue(item, index) {
 </script>
 
 <style scoped>
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 0.5s ease;
+.fade-up-enter-active,
+.fade-up-leave-active {
+  transition: all 0.5s ease;
 }
 
-.v-enter-from,
-.v-leave-to {
+.fade-up-enter-from,
+.fade-up-leave-to {
   opacity: 0;
+  transform: translateY(10%);
 }
 </style>
