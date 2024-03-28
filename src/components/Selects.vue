@@ -1,10 +1,10 @@
 <template>
-  <div class="cursor-pointer w-64">
+  <div class="w-64 cursor-pointer">
     <div
       :class="open ? 'border-blue-500  text-blue-500' : ''"
       @click="openDropDown"
       v-click-outside="closeDrop"
-      class="flex hover:border-blue-500 hover:text-blue-500 duration-300 transition items-center justify-between bg-gray-light-200 border-2 select-none font-medium rounded-md py-2 px-3"
+      class="flex items-center justify-between px-3 py-2 font-medium transition duration-300 border-2 rounded-md select-none hover:border-blue-500 hover:text-blue-500 bg-gray-light-200"
     >
       <p>{{ selectedText }}</p>
       <div
@@ -16,7 +16,7 @@
     </div>
     <Transition name="fade-up" mode="out-in">
       <div
-        class="z-10 w-64 p-4 bg-white mt-1 border-2 rounded-md absolute"
+        class="absolute z-10 w-64 p-4 mt-1 bg-white border-2 rounded-md"
         v-if="open"
       >
         <slot name="selects" />

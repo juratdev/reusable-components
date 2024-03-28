@@ -9,6 +9,7 @@
           label="Username"
           type="text"
           placeholder="Username"
+          :error="errors.fullname"
         />
         <Input
           v-model="user.email"
@@ -21,6 +22,7 @@
           label="Password"
           :type="typePass"
           placeholder="Enter password"
+          :error="errors.password"
         >
           <template #suffix>
             <i
@@ -118,11 +120,23 @@ import { ref, reactive } from "vue";
 const emit = defineEmits(["submit"]);
 
 function submitForm() {
-  console.log("submit", user);
+  if (user.fullname == "") {
+    errors.fullname = "Name is required";
+    setTimeout(() => {
+      errors.fullname = "";
+    }, 1000);
+    return;
+  }
+
   emit("submit", user);
 }
 
 const user = reactive({
+  fullname: "",
+  email: "",
+  password: "",
+});
+const errors = reactive({
   fullname: "",
   email: "",
   password: "",
