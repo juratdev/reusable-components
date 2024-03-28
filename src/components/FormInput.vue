@@ -3,7 +3,7 @@
     <form class="flex items-center gap-2">
       <label class="text-black text-lg">{{ label }}</label>
       <div
-        class="border-2 max-w-64 flex items-center bg-blue-50 focus-within:border-blue-500 rounded px-2.5"
+        class="border-2 max-w-64 flex items-center bg-gray-50 focus-within:border-blue-500 rounded px-2.5"
       >
         <slot name="prefix" />
         <input
@@ -13,7 +13,7 @@
           :class="disabled ? 'cursor-not-allowed' : ''"
           @update:modelValue="passInputValue"
           @input="$emit('update:modelValue', $event.target.value)"
-          class="outline-none bg-blue-50 py-3 px-2.5 focus:border-blue-500 transition duration-300"
+          class="outline-none bg-gray-50 py-3 px-2.5 focus:border-blue-500 transition duration-300"
         />
         <slot name="suffix" />
       </div>
