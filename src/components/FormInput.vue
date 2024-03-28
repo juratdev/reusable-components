@@ -10,8 +10,9 @@
           :type="type"
           :disabled="disabled"
           :placeholder="placeholder"
-          :rows="rows"
           :class="disabled ? 'cursor-not-allowed' : ''"
+          @update:modelValue="passInputValue"
+          @input="$emit('update:modelValue', $event.target.value)"
           class="outline-none bg-blue-50 py-3 px-2.5 focus:border-blue-500 transition duration-300"
         />
         <slot name="suffix" />
@@ -19,14 +20,22 @@
     </form>
   </div>
 </template>
+
 <script setup>
 import { defineProps } from "vue";
 
 defineProps({
   label: String,
+  modelValue: String | Number,
   placeholder: String,
   type: String,
   required: true,
   disabled: Boolean,
 });
+
+const emit = defineEmits(["update:modelValue"]);
+
+function passInputValue(value) {
+  emit("update:modelValue", value);
+}
 </script>

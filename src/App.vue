@@ -1,11 +1,27 @@
 <template>
   <div class="flex">
     <!-- Inputs -->
-    <div class="flex flex-col">
-      <h2 class="px-5 pt-5 text-2xl font-medium">Form inputs:</h2>
+    <form class="flex flex-col" @submit.prevent="submitForm">
+      <h2 class="pt-5 px-5 text-2xl font-medium">Form inputs:</h2>
       <div>
-        <Input label="Username" type="text" placeholder="Username" />
-        <Input label="Password" :type="typePass" placeholder="Enter password">
+        <Input
+          v-model="user.fullname"
+          label="Username"
+          type="text"
+          placeholder="Username"
+        />
+        <Input
+          v-model="user.email"
+          label="Email"
+          type="email"
+          placeholder="Enter email"
+        />
+        <Input
+          v-model="user.password"
+          label="Password"
+          :type="typePass"
+          placeholder="Enter password"
+        >
           <template #suffix>
             <i
               @click="showPassword"
@@ -31,7 +47,8 @@
           placeholder="Disabled"
         />
       </div>
-    </div>
+      <Button title="Submit" variant="medium" class="flex items-center px-5" />
+    </form>
     <!-- Buttons -->
     <div class="flex flex-col">
       <h2 class="px-5 pt-5 text-2xl font-medium">Buttons:</h2>
@@ -96,8 +113,20 @@
 import Input from "./components/FormInput.vue";
 import Button from "./components/Buttons.vue";
 import Select from "./components/Selects.vue";
-import { ref } from "vue";
+import { ref, reactive } from "vue";
 
+const emit = defineEmits(["submit"]);
+
+function submitForm() {
+  console.log("submit", user);
+  emit("submit", user);
+}
+
+const user = reactive({
+  fullname: "",
+  email: "",
+  password: "",
+});
 const options = [
   { option: "Olma", id: 1 },
   { option: "Anor", id: 2 },
