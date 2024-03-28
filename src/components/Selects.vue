@@ -19,34 +19,20 @@
         class="z-10 w-64 p-4 bg-white mt-1 border-2 rounded-md absolute"
         v-if="open"
       >
-        <div
-          v-for="(item, index) in options"
-          :key="index"
-          class="hover:text-blue-500 transition duration-300 last:border-b-0 pb-2 last:pb-0 border-b-2"
-        >
-          <p @click="updateValue(item.option, item.id)">{{ item.option }}</p>
-        </div>
+        <slot name="selects" />
       </div>
     </Transition>
   </div>
 </template>
 
 <script setup>
-import { defineProps, defineEmits, ref } from "vue";
+import { defineProps, ref } from "vue";
 
 defineProps({
   label: String,
   selectedText: String,
+  options: Array,
 });
-
-const options = [
-  { option: "Olma", id: 1 },
-  { option: "Anor", id: 2 },
-  { option: "Nok", id: 3 },
-  { option: "Shaftoli", id: 4 },
-  { option: "Uzum", id: 5 },
-  { option: "Banan", id: 6 },
-];
 
 let open = ref(false);
 
@@ -57,23 +43,23 @@ function openDropDown() {
 function closeDrop() {
   open.value = false;
 }
-let emit = defineEmits(["value"]);
+// let emit = defineEmits(["value"]);
 
-function updateValue(item, index) {
-  open.value = false;
-  emit("value", [item, index]);
-}
+// function updateValue(item, index) {
+//   open.value = false;
+//   emit("value", [item, index]);
+// }
 </script>
 
 <style scoped>
 .fade-up-enter-active,
 .fade-up-leave-active {
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 
 .fade-up-enter-from,
 .fade-up-leave-to {
   opacity: 0;
-  transform: translateY(10%);
+  transform: translateY(5%);
 }
 </style>

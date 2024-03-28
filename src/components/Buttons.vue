@@ -30,15 +30,4 @@ const variants = {
   small:
     "text-white bg-blue-600 hover:bg-blue-800 font-medium rounded text-xs rounded-full outline-none py-2 px-2.5",
 };
-
-// const buttonColor = computed((variant) => {
-//   switch (variant) {
-//     case "outline":
-//       return "bg-transparent border-2 border-blue-light text-blue hover:bg-blue hover:text-white py-2 px-8";
-//     case "secondary":
-//       return "bg-gray-light-400 text-blue hover:opacity-50 active:opacity-20 px-8 py-2.5";
-//     default:
-//       return "bg-blue text-white border border-blue hover:opacity-50 active:opacity-30 py-2 px-8";
-//   }
-// });
 </script>

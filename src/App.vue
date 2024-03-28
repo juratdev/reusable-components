@@ -63,10 +63,26 @@
     <div class="ms-14 flex flex-col">
       <h2 class="px-5 py-5 text-2xl font-medium">Form Selects:</h2>
       <div>
-        <Select :selectedText="mainText" @value="upDateValue">
+        <Select
+          :selectedText="mainText"
+          @value="upDateValue"
+          :options="options"
+        >
           <template #suffix>
             <i class="fa-solid fa-angle-right"></i>
           </template>
+          <template #selects>
+            <ul
+              v-for="(item, index) in options"
+              :key="index"
+              :class="{ 'bg-gray-200': mainText === item.option }"
+              class="hover:text-blue-500 transition duration-300 last:border-b-0 border-b-2"
+            >
+              <li @click="upDateValue(item.option, item.id)" class="p-1">
+                {{ item.option }}
+              </li>
+            </ul></template
+          >
         </Select>
       </div>
     </div>
@@ -79,10 +95,19 @@ import Button from "./components/Buttons.vue";
 import Select from "./components/Selects.vue";
 import { ref } from "vue";
 
+const options = [
+  { option: "Olma", id: 1 },
+  { option: "Anor", id: 2 },
+  { option: "Nok", id: 3 },
+  { option: "Shaftoli", id: 4 },
+  { option: "Uzum", id: 5 },
+  { option: "Banan", id: 6 },
+];
+
 const mainText = ref("All");
 
-function upDateValue(value) {
-  mainText.value = value[0];
+function upDateValue(value, index) {
+  mainText.value = value;
 }
 
 const showPasswordIcon = ref(false);
@@ -101,3 +126,5 @@ const showPassword = () => {
   }
 };
 </script>
+
+<style scoped></style>
