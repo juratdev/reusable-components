@@ -80,7 +80,7 @@
       </div>
     </div>
     <!-- Selects -->
-    <div class="ms-14 flex flex-col">
+    <form class="ms-14 flex flex-col">
       <h2 class="px-5 py-5 text-2xl font-medium">Form Selects:</h2>
       <div>
         <Select
@@ -96,7 +96,7 @@
               v-for="(item, index) in options"
               :key="index"
               :class="{ 'bg-gray-200': mainText === item.option }"
-              class="hover:text-blue-500 transition duration-300 last:border-b-0 border-b-2"
+              class="hover:text-black transition duration-300 text-black/80 font-medium last:border-b-0 border-b-2"
             >
               <li @click="upDateValue(item.option, item.id)" class="p-1">
                 {{ item.option }}
@@ -105,7 +105,7 @@
           >
         </Select>
       </div>
-    </div>
+    </form>
   </div>
 </template>
 
@@ -127,13 +127,13 @@ const user = reactive({
   email: "",
   password: "",
 });
+
 const options = [
   { option: "Olma", id: 1 },
   { option: "Anor", id: 2 },
   { option: "Nok", id: 3 },
-  { option: "Shaftoli", id: 4 },
-  { option: "Uzum", id: 5 },
-  { option: "Banan", id: 6 },
+  { option: "Uzum", id: 4 },
+  { option: "Banan", id: 5 },
 ];
 
 const mainText = ref("All");

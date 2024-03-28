@@ -13,13 +13,14 @@
   </div>
 </template>
 <script setup>
-import { defineProps, computed } from "vue";
+import { defineProps } from "vue";
 
 defineProps({
   variant: String,
   title: String,
   styles: String,
 });
+
 const variants = {
   large:
     "bg-red-500 border-2 border-red-400 text-white hover:bg-red-800 py-2 px-8 transition duration-300 text-2xl",

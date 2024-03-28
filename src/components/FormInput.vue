@@ -29,7 +29,6 @@ defineProps({
   modelValue: String | Number,
   placeholder: String,
   type: String,
-  required: true,
   disabled: Boolean,
 });
 

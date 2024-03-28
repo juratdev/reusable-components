@@ -4,7 +4,7 @@
       :class="open ? 'border-blue-500  text-blue-500' : ''"
       @click="openDropDown"
       v-click-outside="closeDrop"
-      class="flex hover:border-blue-500 hover:text-blue-500 duration-300 transition items-center justify-between bg-gray-light-200 border-2 select-none rounded-md py-2 px-3"
+      class="flex hover:border-blue-500 hover:text-blue-500 duration-300 transition items-center justify-between bg-gray-light-200 border-2 select-none font-medium rounded-md py-2 px-3"
     >
       <p>{{ selectedText }}</p>
       <div
@@ -34,7 +34,7 @@ defineProps({
   options: Array,
 });
 
-let open = ref(false);
+const open = ref(false);
 
 function openDropDown() {
   open.value = !open.value;
@@ -43,12 +43,6 @@ function openDropDown() {
 function closeDrop() {
   open.value = false;
 }
-// let emit = defineEmits(["value"]);
-
-// function updateValue(item, index) {
-//   open.value = false;
-//   emit("value", [item, index]);
-// }
 </script>
 
 <style scoped>
