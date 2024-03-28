@@ -2,7 +2,7 @@
   <div class="flex">
     <!-- Inputs -->
     <form class="flex flex-col" @submit.prevent="submitForm">
-      <h2 class="pt-5 px-5 text-2xl font-medium">Form inputs:</h2>
+      <h2 class="px-5 pt-5 text-2xl font-medium">Form inputs:</h2>
       <div>
         <Input
           v-model="user.fullname"
@@ -26,18 +26,18 @@
             <i
               @click="showPassword"
               :class="showPasswordIcon ? 'fa-eye' : 'fa-eye-slash'"
-              class="fa-regular cursor-pointer w-4"
+              class="w-4 cursor-pointer fa-regular"
             ></i>
           </template>
         </Input>
         <Input label="Search" type="text" placeholder="Search..." variant="">
           <template #suffix>
-            <i class="fa-solid fa-magnifying-glass text-gray-500"></i>
+            <i class="text-gray-500 fa-solid fa-magnifying-glass"></i>
           </template>
         </Input>
         <Input label="Search icon-right" type="text" placeholder="Search...">
           <template #prefix>
-            <i class="fa-solid fa-magnifying-glass text-gray-500"></i>
+            <i class="text-gray-500 fa-solid fa-magnifying-glass"></i>
           </template>
         </Input>
         <Input
@@ -80,7 +80,7 @@
       </div>
     </div>
     <!-- Selects -->
-    <form class="ms-14 flex flex-col">
+    <form class="flex flex-col ms-14">
       <h2 class="px-5 py-5 text-2xl font-medium">Form Selects:</h2>
       <div>
         <Select
@@ -95,8 +95,8 @@
             <ul
               v-for="(item, index) in options"
               :key="index"
-              :class="{ 'bg-gray-200': mainText === item.option }"
-              class="hover:text-black transition duration-300 text-black/80 font-medium last:border-b-0 border-b-2"
+              :class="{ 'bg-gray-200/70': mainText === item.option }"
+              class="font-medium transition duration-300 border-b-2 hover:text-black text-black/80 last:border-b-0"
             >
               <li @click="upDateValue(item.option, item.id)" class="p-1">
                 {{ item.option }}

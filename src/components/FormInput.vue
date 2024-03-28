@@ -1,7 +1,7 @@
 <template>
   <div class="p-5">
     <form class="flex items-center gap-2">
-      <label class="text-black text-lg">{{ label }}</label>
+      <label class="text-lg text-black">{{ label }}</label>
       <div
         class="border-2 max-w-64 flex items-center bg-gray-50 focus-within:border-blue-500 rounded px-2.5"
       >
