@@ -1,5 +1,6 @@
 <template>
   <div class="flex">
+    <!-- Inputs -->
     <div class="flex flex-col">
       <h2 class="px-5 pt-5 text-2xl font-medium">Form inputs:</h2>
       <div>
@@ -31,6 +32,7 @@
         />
       </div>
     </div>
+    <!-- Buttons -->
     <div class="flex flex-col">
       <h2 class="px-5 pt-5 text-2xl font-medium">Buttons:</h2>
       <div>
@@ -60,6 +62,7 @@
         </div>
       </div>
     </div>
+    <!-- Selects -->
     <div class="ms-14 flex flex-col">
       <h2 class="px-5 py-5 text-2xl font-medium">Form Selects:</h2>
       <div>
